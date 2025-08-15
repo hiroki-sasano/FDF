@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/hirokisasano/42tokyo/cursus/fdf/minilibx-linux",
+      "program": "/Users/hirokisasano/42tokyo/cursus/fdf/minilibx-linux/build/Debug/outDebug"
+    }
+  ]
+}
