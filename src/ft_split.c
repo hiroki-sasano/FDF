@@ -6,11 +6,11 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:10:28 by hisasano          #+#    #+#             */
-/*   Updated: 2025/05/06 12:13:07 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:07:27 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 #include <stdlib.h>
 
 static size_t	ft_count_arr(const char *s, char c)

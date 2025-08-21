@@ -6,11 +6,11 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 17:57:10 by hisasano          #+#    #+#             */
-/*   Updated: 2025/05/06 11:37:07 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/21 17:58:56 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 #include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

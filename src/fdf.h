@@ -6,12 +6,23 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:50:17 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/21 15:23:42 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/21 21:16:27 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
+
+#ifndef M_PI
+# define M_PI 3.14159265358979323846
+#endif
+
+//tau = 2π
+
+#include "get_next_line.h"
+#include "lord_map.h"
+#include "helper.h"
+#include "bresenham.h"
 
 typedef struct s_point {
     double x;       // 元のX座標（列番号）
@@ -44,7 +55,6 @@ typedef struct s_app {
 } t_app;
 
 #endif
-
 
 /*
 

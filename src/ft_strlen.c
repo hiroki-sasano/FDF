@@ -6,11 +6,11 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 20:34:28 by hisasano          #+#    #+#             */
-/*   Updated: 2025/05/06 16:42:49 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:06:30 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
 size_t	ft_strlen(const char *s)
 {

@@ -6,14 +6,13 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:30:00 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/21 15:45:12 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/21 17:54:33 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include "get_next_line.h"
 #include "fdf.h"
 
 void	map_free(t_map *m)
@@ -25,15 +24,14 @@ void	map_free(t_map *m)
 	r = 0;
 	while (r < m->height)
 	{
-		free(m->points[r]);  // 各行の t_point 配列を解放
+		free(m->points[r]);
 		r++;
 	}
-	free(m->points);         // 行ポインタ配列を解放
+	free(m->points);
 	m->points = NULL;
 	m->width = 0;
 	m->height = 0;
 }
-
 
 static int	measure_map(int fd, t_map *out)
 {
@@ -65,22 +63,29 @@ static int	measure_map(int fd, t_map *out)
 
 static int	parse_row(char **nums, t_point *row, int y, int width)
 {
-	int	x;
+	int		x;
+	int		val;
 
 	x = 0;
-	while (nums[x] && x < width)
+	while (x < width)
 	{
+		if (!nums[x])               // 列不足
+			return (0);
+		if (!fdf_atoi(nums[x], &val)) // 変換失敗
+			return (0);
 		row[x].x = x;
 		row[x].y = y;
-		row[x].z = ft_atoi(nums[x]);
+		row[x].z = val;
 		row[x].x_proj = 0;
 		row[x].y_proj = 0;
 		x++;
 	}
+	if (nums[x])                    // 列過剰
+		return (0);
 	return (1);
 }
 
-int	load_rows(int fd, t_map *map)
+static int	load_rows(int fd, t_map *map)
 {
 	char	*line;
 	char	**nums;
