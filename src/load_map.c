@@ -6,67 +6,128 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:30:00 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/15 20:25:17 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:45:12 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <fcntl.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include "get_next_line.h"
+#include "fdf.h"
 
-int map_load_from_file(const char *path, t_map *out)
+void	map_free(t_map *m)
 {
-    int fd = open(path, O_RDONLY);
-    if (fd == -1) return 0;
+	int	r;
 
-    // 1周目：height/width 測定
-    int height = 0, width = 0;
-    char *line;
-    while ((line = get_next_line(fd))) 
+	if (!m || !m->points)
+		return ;
+	r = 0;
+	while (r < m->height)
 	{
-        int w = count_cols(line); // 空白区切りの個数を数える
-        if (w > width) 
-			width = w;
-        height++;
-        free(line);
-    }
-    if (height == 0 || width == 0) 
-	{
-		close(fd); 
-		return 0;
+		free(m->points[r]);  // 各行の t_point 配列を解放
+		r++;
 	}
-    
-    // メモリ確保
-    int **map = malloc(sizeof(int*) * height);
-    if (!map) 
-	{
-		close(fd);
-		return 0;
-	}
-
-    // 2周目：実データ読み込み
-    for (int r = 0; r < h; r++) {
-        line = get_next_line(fd);
-        if (!line) { /* 失敗処理 */ }
-        z[r] = parse_line_to_ints(line, wmax); // 列不足の扱いは方針次第
-        free(line);
-        if (!z[r]) { /* 失敗処理（確保済み行をfree）*/ }
-    }
-    close(fd);
-
-    // 完成：outに集約
-    out->map = map;
-    out->height = height;
-    out->width  = width;
-    return 1;
+	free(m->points);         // 行ポインタ配列を解放
+	m->points = NULL;
+	m->width = 0;
+	m->height = 0;
 }
 
-void map_free(t_map *m)
+
+static int	measure_map(int fd, t_map *out)
 {
-    if (!m || !m->z) return;
-    for (int r = 0; r < m->height; r++) free(m->z[r]);
-    free(m->z);
-    m->z = NULL;
-    m->height = m->width = 0;
+	char	*line;
+	int		h;
+	int		w;
+	int		wmax;
+
+	out->width = 0;
+	out->height = 0;
+	h = 0;
+	wmax = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		w = count_cols(line);
+		if (w > wmax)
+			wmax = w;
+		h++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	if (h == 0 || wmax == 0)
+		return (0);
+	out->height = h;
+	out->width = wmax;
+	return (1);
+}
+
+static int	parse_row(char **nums, t_point *row, int y, int width)
+{
+	int	x;
+
+	x = 0;
+	while (nums[x] && x < width)
+	{
+		row[x].x = x;
+		row[x].y = y;
+		row[x].z = ft_atoi(nums[x]);
+		row[x].x_proj = 0;
+		row[x].y_proj = 0;
+		x++;
+	}
+	return (1);
+}
+
+int	load_rows(int fd, t_map *map)
+{
+	char	*line;
+	char	**nums;
+	int		y;
+
+	map->points = malloc(sizeof(t_point *) * map->height);
+	if (!map->points)
+		return (0);
+	y = 0;
+	while ((line = get_next_line(fd)))
+	{
+		nums = ft_split(line, ' ');
+		map->points[y] = malloc(sizeof(t_point) * map->width);
+		if (!map->points[y] || !nums)
+			return (0);
+		parse_row(nums, map->points[y], y, map->width);
+		free_split(nums);
+		free(line);
+		y++;
+	}
+	return (1);
+}
+
+int	load_map(const char *path, t_map *out)
+{
+	int	fd;
+
+	out->points = NULL;
+	out->width = 0;
+	out->height = 0;
+
+	// 1回目：マップサイズを測定
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	if (!measure_map(fd, out))
+		return (close(fd), 0);
+	close(fd);
+
+	// 2回目：points にデータをロード
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	if (!load_rows(fd, out))
+		return (close(fd), 0);
+	close(fd);
+
+	return (1);
 }
 
