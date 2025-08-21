@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:50:17 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/21 21:16:27 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/21 21:31:46 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 //tau = 2π
 
-#include "get_next_line.h"
 #include "lord_map.h"
-#include "helper.h"
 #include "bresenham.h"
+#include "get_next_line.h"
+#include "helper.h"
 
 typedef struct s_point {
     double x;       // 元のX座標（列番号）
