@@ -6,19 +6,18 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:50:17 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/21 21:31:46 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:05:42 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#ifndef M_PI
-# define M_PI 3.14159265358979323846
+#ifndef M_TAU
+# define M_TAU 6.28318530717958647692
 #endif
 
-//tau = 2π
-
+#include "fdf_keys.h"
 #include "lord_map.h"
 #include "bresenham.h"
 #include "get_next_line.h"
