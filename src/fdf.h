@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:50:17 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/28 19:05:42 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:42:45 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 #include "fdf_keys.h"
 #include "lord_map.h"
-#include "bresenham.h"
 #include "get_next_line.h"
 #include "helper.h"
 
@@ -53,33 +52,15 @@ typedef struct s_app {
     t_view view;    // 投影・描画パラメータ
 } t_app;
 
-#endif
+void bresenham_draw(t_app *app, t_point *p1, t_point *p2);
+void draw_map(t_app *app);
 
-/*
+int close_window(void *param);
+int key_hook(int keycode, void *param);
 
-typedef struct s_map {
-    int   **map;    
-    int     width;
-    int     height;
-} t_map;
+void	reset_view(t_view *view, int win_w, int win_h, t_map *map);
 
-// app.h : MLXや投影パラメータも一緒に持つとさらに楽 
-typedef struct s_view {
-    double zoom;       // ズーム
-    double ang_iso;    // 等角の角度（例：30°）
-    double z_scale;    // 高さ倍率
-    int    off_x;      // 画面オフセット
-    int    off_y;
-} t_view;
-
-typedef struct s_app {
-    void  *mlx;     //mlsに渡すポインタ
-    void  *win;     //window
-    t_map  map;   // ←ここに地形データ
-    t_view view;  // ←描画パラメータ
-} t_app;
-
+int mouse_hook(int button, int x, int y, void *param);
+void setup_hooks(t_app *app);
 
 #endif
-
-*/
