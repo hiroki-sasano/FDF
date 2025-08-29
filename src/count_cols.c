@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.h                                           :+:      :+:    :+:   */
+/*   count_cols.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 17:55:57 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/29 16:59:45 by hisasano         ###   ########.fr       */
+/*   Created: 2025/08/29 17:04:45 by hisasano          #+#    #+#             */
+/*   Updated: 2025/08/29 17:09:33 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HELPER_H
-# define HELPER_H
+#include "fdf.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_strlen(const char *s);
-char	**ft_split(char const *s, char c);
-int		fdf_atoi(const char *str, int *out);
-char	*ft_strdup(const char *s1);
+int	count_cols(char *line)
+{
+	int	w;
 
-#endif
+	w = 0;
+	while (*line)
+	{
+		if (*line == ' ')
+			w++;
+		line++;
+	}
+	return (w);
+}

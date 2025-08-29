@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.h                                           :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 17:55:57 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/29 16:59:45 by hisasano         ###   ########.fr       */
+/*   Created: 2025/08/29 17:27:15 by hisasano          #+#    #+#             */
+/*   Updated: 2025/08/29 17:34:40 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HELPER_H
-# define HELPER_H
+#include "fdf.h"
+#include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_strlen(const char *s);
-char	**ft_split(char const *s, char c);
-int		fdf_atoi(const char *str, int *out);
-char	*ft_strdup(const char *s1);
+void	free_split(char **nums)
+{
+	int	i;
 
-#endif
+	i = 0;
+	if (!nums)
+		return ;
+	while (nums[i])
+	{
+		free(nums[i]);
+		i++;
+	}
+	free(nums);
+}

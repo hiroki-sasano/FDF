@@ -6,17 +6,19 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 17:50:39 by hisasano          #+#    #+#             */
-/*   Updated: 2025/06/09 21:24:46 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/29 17:01:42 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdlib.h>
+#include <stdint.h>
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 4096
 #endif
 
-#include <stdlib.h>
+
 
 size_t	my_strlen(const char *s)
 {

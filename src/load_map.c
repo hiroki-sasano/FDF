@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:30:00 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/21 17:54:33 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/29 20:37:00 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,16 @@ static int	parse_row(char **nums, t_point *row, int y, int width)
 	return (1);
 }
 
+
+#include <stdio.h>
+
 static int	load_rows(int fd, t_map *map)
 {
 	char	*line;
 	char	**nums;
 	int		y;
+
+	
 
 	map->points = malloc(sizeof(t_point *) * map->height);
 	if (!map->points)
@@ -98,6 +103,7 @@ static int	load_rows(int fd, t_map *map)
 	while ((line = get_next_line(fd)))
 	{
 		nums = ft_split(line, ' ');
+		printf("fin_ftsplit\n");
 		map->points[y] = malloc(sizeof(t_point) * map->width);
 		if (!map->points[y] || !nums)
 			return (0);
@@ -108,6 +114,7 @@ static int	load_rows(int fd, t_map *map)
 	}
 	return (1);
 }
+
 
 int	load_map(const char *path, t_map *out)
 {
@@ -120,7 +127,10 @@ int	load_map(const char *path, t_map *out)
 	// 1回目：マップサイズを測定
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
+	{
+		printf("open failed\n");
 		return (0);
+	}
 	if (!measure_map(fd, out))
 		return (close(fd), 0);
 	close(fd);
@@ -128,11 +138,13 @@ int	load_map(const char *path, t_map *out)
 	// 2回目：points にデータをロード
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
+	{
+		printf("second open failed\n");
 		return (0);
+	}
 	if (!load_rows(fd, out))
 		return (close(fd), 0);
 	close(fd);
 
 	return (1);
 }
-

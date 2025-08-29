@@ -6,7 +6,7 @@
 #    By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/28 20:56:52 by hisasano          #+#    #+#              #
-#    Updated: 2025/08/29 15:52:00 by hisasano         ###   ########.fr        #
+#    Updated: 2025/08/29 17:39:18 by hisasano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,15 @@ SRC         := main.c\
 				ft_split.c\
 				ft_strlen.c\
 				ft_substr.c\
+				ft_strdup.c\
 				get_next_line.c\
 				get_next_line_utils.c\
 				key_hook.c\
 				load_map.c\
 				mouse_hook.c\
-				setup_hooks.c
+				setup_hooks.c\
+				count_cols.c\
+				free_split.c
 				
 SRCS        := $(addprefix $(SRCDIR)/,$(SRC))
 OBJS        := $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
@@ -58,7 +61,6 @@ $(MLX):
 
 clean:
 	rm -rf $(OBJDIR)
-	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
@@ -68,4 +70,4 @@ re: fclean all
 test: all
 	valgrind --leak-check=full ./$(NAME) $(TEST_FILE)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re  test
