@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:50:17 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/28 20:42:45 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:43:49 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "lord_map.h"
 #include "get_next_line.h"
 #include "helper.h"
+#include "mlx.h"
 
 typedef struct s_point {
     double x;       // 元のX座標（列番号）

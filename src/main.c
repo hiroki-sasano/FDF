@@ -6,12 +6,13 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 04:34:31 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/28 20:28:12 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:44:35 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
+#include <unistd.h>
 
 void	reset_view(t_view *view, int win_w, int win_h, t_map *map)
 {
@@ -44,7 +45,7 @@ int main(int argc, char **argv)
     app.win = mlx_new_window(app.mlx, 800, 600, "FDF");
     reset_view(&app.view, 800, 600, &app.map);
 
-    redraw(&app);
+    draw_map(&app);
 	setup_hooks(&app);
 
     mlx_loop(app.mlx);

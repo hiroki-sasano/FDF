@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 20:32:09 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/21 18:52:56 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/08/29 16:39:49 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,14 @@ int	fdf_atoi(const char *str, int *out)
 		return (0);
 	str = skip_ws(str);
 	str = parse_sign(str, &sign);
-	if (change_dc(*str) < 0)
+	dig = change_dc(*str);
+	if (dig < 0)
 		return (0);
 	res = 0;
+	
 	while (dig >= 0)
 	{
-		if (!add_digit_safe(&res, &dig))
+		if (!add_digit_safe(&res, dig))
 			return (0);
 		str++;
 		dig = change_dc(*str);

@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   lord_map.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 16:23:18 by hisasano          #+#    #+#             */
-/*   Updated: 2025/06/09 17:57:14 by hisasano         ###   ########.fr       */
+/*   Created: 2025/08/21 16:21:51 by hisasano          #+#    #+#             */
+/*   Updated: 2025/08/29 15:41:55 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef LORD_MAP_H
+# define LORD_MAP_H
 
-# include <stddef.h>
+typedef struct s_map t_map; 
 
-char	*get_next_line(int fd);
-size_t	my_strlen(const char *s);
-void	*my_memcpy(void *dst, const void *src, size_t n);
-char	*my_strjoin(char const *s1, char *s2);
-char	*my_strchr(const char *s, int c);
-char	*my_strdup(const char *s);
+void	map_free(t_map *m);
+int		load_map(const char *path, t_map *out);
 
 #endif
