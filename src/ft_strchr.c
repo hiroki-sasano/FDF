@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lord_map.h                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 16:21:51 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/02 21:10:17 by hisasano         ###   ########.fr       */
+/*   Created: 2025/04/26 20:33:30 by hisasano          #+#    #+#             */
+/*   Updated: 2025/09/02 16:46:13 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LORD_MAP_H
-# define LORD_MAP_H
+#include "fdf.h"
 
-typedef struct s_map	t_map;
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
 
-void					map_free(t_map *m);
-int						load_map(const char *path, t_map *out);
-int						count_cols(char *line);
-void					free_split(char **nums);
-int						measure_map(int fd, t_map *out);
-int						parse_row(char **nums, t_point *row, int y, int width,
-							t_map *map);
-
-#endif
+	i = 0;
+	while (s[i] != (char)c)
+	{
+		if (s[i] == '\0')
+		{
+			return (NULL);
+		}
+		i++;
+	}
+	return ((char *)&s[i]);
+}

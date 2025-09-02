@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:41:29 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/28 15:41:39 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/02 16:41:25 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void bresenham_draw(t_app *app, t_point *p1, t_point *p2)
 
     while (1)
     {
-        put_pixel(app, x1, y1, 0xFFFFFF); // 白色で描画
+        put_pixel(app, x1, y1, p1->color);
         if (x1 == x2 && y1 == y2)
             break;
         int e2 = 2 * err;
