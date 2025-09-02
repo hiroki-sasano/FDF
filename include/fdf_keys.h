@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:53 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/01 19:52:38 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/02 21:30:15 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 #  define KEY_A          97    // Y軸 左回転
 #  define KEY_D          100   // Y軸 右回転
 
-// 高さ強調 (U/Dキー)
-#  define KEY_U          117
-#  define KEY_D          100
+// 高さ強調 (U/Hキー)
+#  define KEY_U          117   // 高さ強調+
+#  define KEY_H          104   // 高さ強調-
 
 #  define MOUSE_SCROLL_UP    4
 #  define MOUSE_SCROLL_DOWN  5

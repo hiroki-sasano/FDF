@@ -6,13 +6,13 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 21:08:44 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/02 21:21:31 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/02 21:31:41 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <unistd.h>
-#include <stdlib.h>s
+#include <stdlib.h>
 
 static int	validate_line(char *line, int *expected_w)
 {
@@ -48,7 +48,7 @@ int	measure_map(int fd, t_map *out)
 		line = get_next_line(fd);
 	}
 	if (h == 0)
-		return (map_error("Error: empty map file\n"));
+		return (0);
 	out->height = h;
 	out->width = expected_w;
 	return (1);

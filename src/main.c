@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 04:34:31 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/02 20:26:34 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/02 22:02:47 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#include <stdio.h>
+
 static void	offset_z_scale(t_view *view, t_map *map)
 {
-	int	xy_max;
+	double	xy_max;
 
 	if (!map || map->z_max == 0)
 	{
@@ -25,10 +27,7 @@ static void	offset_z_scale(t_view *view, t_map *map)
 		return ;
 	}
 	xy_max = fmax((double)map->width, (double)map->height);
-	if (xy_max < (map->z_max / 2))
-		view->z_scale = (double)xy_max / (double)map->z_max;
-	else
-		view->z_scale = 1.0;
+	view->z_scale = fmin(1.0, xy_max / (double)map->z_max);
 }
 
 void	reset_view(t_view *view, int win_w, int win_h, t_map *map)

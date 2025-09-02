@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:30:00 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/02 21:09:54 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/02 21:59:11 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	load_map(const char *path, t_map *out)
 	out->points = NULL;
 	out->width = 0;
 	out->height = 0;
-	// 1回目：マップサイズを測定
+	out->z_max = 0;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
@@ -74,7 +74,6 @@ int	load_map(const char *path, t_map *out)
 	if (!measure_map(fd, out))
 		return (close(fd), 0);
 	close(fd);
-	// 2回目：points にデータをロード
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{

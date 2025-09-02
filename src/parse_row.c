@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:38:39 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/02 20:18:30 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/02 21:59:34 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	parse_row(char **nums, t_point *row, int y, int width, t_map *map)
 		if (!nums[x])
 			return (0);
 		comma = split_comma(nums[x]);
-		if (!fdf_atoi(nums[x], &val))
+		if (!fdf_atoi(nums[x], &val)){
 			return (0);
 		set_point(&row[x], x, y, val);
 		update_z_max(map, val);
