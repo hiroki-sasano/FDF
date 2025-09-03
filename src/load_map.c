@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:30:00 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/02 21:59:11 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/03 02:43:28 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,18 @@ static int	load_rows(int fd, t_map *map)
 	if (!map->points)
 		return (0);
 	y = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		nums = ft_split(line, ' ');
 		map->points[y] = malloc(sizeof(t_point) * map->width);
 		if (!map->points[y] || !nums)
 			return (0);
-		parse_row(nums, map->points[y], y, map->width, map);
+		parse_row(nums, map->points[y], y, map);
 		free_split(nums);
 		free(line);
 		y++;
+		line = get_next_line(fd);
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/28 20:56:52 by hisasano          #+#    #+#              #
-#    Updated: 2025/09/02 21:11:36 by hisasano         ###   ########.fr        #
+#    Updated: 2025/09/03 15:24:04 by hisasano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ SRC         := main.c bresenham.c draw_map.c key_hook.c load_map.c\
 SRCS        := $(addprefix $(SRCDIR)/,$(SRC))
 OBJS        := $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
 
-# ---- OS判定 ----
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
@@ -43,6 +42,7 @@ else ifeq ($(UNAME_S),Darwin)
 endif
 
 TEST_FILE   := 10-2.fdf
+TEST_PATH   := test_maps/$(TEST_FILE)
 
 all: $(NAME)
 
@@ -67,6 +67,6 @@ fclean: clean
 re: fclean all
 
 test: all
-	./$(NAME) $(TEST_FILE)
+	./$(NAME) $(TEST_FILE) valgrind --leak-check=full
 
 .PHONY: all clean fclean re test

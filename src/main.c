@@ -6,16 +6,15 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 04:34:31 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/02 22:02:47 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/02 23:07:01 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
-#include <unistd.h>
-#include <stdlib.h>
-
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 static void	offset_z_scale(t_view *view, t_map *map)
 {

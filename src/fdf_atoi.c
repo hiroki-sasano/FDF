@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 20:32:09 by hisasano          #+#    #+#             */
-/*   Updated: 2025/08/29 16:39:49 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/02 23:07:34 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	fdf_atoi(const char *str, int *out)
 	if (dig < 0)
 		return (0);
 	res = 0;
-	
 	while (dig >= 0)
 	{
 		if (!add_digit_safe(&res, dig))

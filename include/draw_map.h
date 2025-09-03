@@ -6,12 +6,25 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 19:42:34 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/01 19:48:11 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/03 15:16:53 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DRAW_MAP_H
 # define DRAW_MAP_H
+
+typedef struct s_bres
+{
+	int					x1;
+	int					y1;
+	int					x2;
+	int					y2;
+	int					dx;
+	int					dy;
+	int					sx;
+	int					sy;
+	int					err;
+}						t_bres;
 
 typedef struct s_app	t_app;
 typedef struct s_point	t_point;
