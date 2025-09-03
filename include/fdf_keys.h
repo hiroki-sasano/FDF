@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 19:04:53 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/03 15:17:40 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:54:05 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@
 #  define KEY_U 117 // 高さ強調+
 #  define KEY_H 104 // 高さ強調-
 
-#  define MOUSE_SCROLL_UP 4
-#  define MOUSE_SCROLL_DOWN 5
 # endif
 
 # ifdef __APPLE__
@@ -59,8 +57,6 @@
 #  define KEY_U 32 // U
 #  define KEY_H 4  // D (注意: macOSではAと被るので別キー推奨)
 
-#  define MOUSE_SCROLL_UP 4
-#  define MOUSE_SCROLL_DOWN 5
 # endif
 
 #endif

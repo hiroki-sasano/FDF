@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 19:42:34 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/03 15:16:53 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/03 21:06:49 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int						key_hook(int keycode, void *param);
 void					reset_view(t_view *view, int win_w, int win_h,
 							t_map *map);
 
-int						mouse_hook(int button, int x, int y, void *param);
 void					setup_hooks(t_app *app);
 
 #endif

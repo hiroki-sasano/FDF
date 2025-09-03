@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:07:08 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/03 02:40:18 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:51:51 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	key_hook(int keycode, void *param)
 	t_app	*app;
 
 	app = (t_app *)param;
-	printf("keycode = %d\n", keycode);
 	if (keycode == KEY_ESC)
 	{
 		map_free(&app->map);
@@ -82,11 +81,3 @@ int	close_window(void *param)
 	exit(0);
 	return (0);
 }
-
-/*
-W / S : 上下回転（X軸）
-
-A / D : 左右回転（Y軸）
-
-Q / E : 水平回転（Z軸）
-*/
