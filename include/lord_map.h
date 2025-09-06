@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:21:51 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/02 23:19:48 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/06 17:28:31 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int						count_cols(char *line);
 void					free_split(char **nums);
 int						measure_map(int fd, t_map *out);
 int						parse_row(char **nums, t_point *row, int y, t_map *map);
+void					reset_view(t_view *v, int win_w, int win_h, t_map *m);
 
 #endif

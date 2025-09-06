@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 19:18:38 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/01 19:20:00 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/05 23:43:41 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	project_point(t_point *p, t_view *v)
 	x = p->x;
 	y = p->y;
 	z = p->z * v->z_scale;
+	rotate_z(&x, &y, v->ang_z);
 	rotate_x(&y, &z, v->ang_x);
 	rotate_y(&x, &z, v->ang_y);
-	rotate_z(&x, &y, v->ang_z);
 	p->x_proj = x * v->zoom + v->off_x;
 	p->y_proj = y * v->zoom + v->off_y;
 }

@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 04:34:31 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/02 23:07:01 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/06 00:41:19 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,6 @@ static void	offset_z_scale(t_view *view, t_map *map)
 	}
 	xy_max = fmax((double)map->width, (double)map->height);
 	view->z_scale = fmin(1.0, xy_max / (double)map->z_max);
-}
-
-void	reset_view(t_view *view, int win_w, int win_h, t_map *map)
-{
-	double	zoom_x;
-	double	zoom_y;
-
-	zoom_x = (double)win_w / map->width;
-	zoom_y = (double)win_h / map->height;
-	view->zoom = fmin(zoom_x, zoom_y) * 0.4;
-	view->ang_x = M_TAU / 24;
-	view->ang_y = M_TAU / 60;
-	view->ang_z = 0;
-	view->z_scale = 1;
-	view->off_x = win_w / 2 - (int)(map->width * view->zoom * 0.4);
-	view->off_y = win_h / 2 - (int)(map->height * view->zoom * 0.25);
 }
 
 static void	exit_error(const char *msg, t_app *app)
@@ -72,8 +56,8 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!load_map(argv[1], &app.map))
 		exit_error("map load failed\n", &app);
-	init_mlx(&app, 1200, 800);
-	reset_view(&app.view, 1200, 800, &app.map);
+	init_mlx(&app, 800, 600);
+	reset_view(&app.view, 800, 600, &app.map);
 	offset_z_scale(&app.view, &app.map);
 	draw_map(&app);
 	setup_hooks(&app);
