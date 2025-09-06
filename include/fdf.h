@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:50:17 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/03 15:16:09 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/06 17:53:04 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@
 # include "helper.h"
 # include "lord_map.h"
 # include "mlx.h"
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}			t_img;
 
 typedef struct s_point
 {
@@ -59,6 +68,7 @@ typedef struct s_app
 	void	*win;
 	t_map	map;
 	t_view	view;
+	t_img	img;
 }			t_app;
 
 #endif

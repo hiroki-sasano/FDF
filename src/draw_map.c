@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:31:28 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/01 19:20:38 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/06 17:54:05 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ void	draw_map(t_app *app)
 	int		x;
 	int		y;
 
-	mlx_clear_window(app->mlx, app->win);
+	app->img.img = mlx_new_image(app->mlx, 800, 600);
+	app->img.addr = mlx_get_data_addr(app->img.img, &app->img.bpp,
+			&app->img.line_len, &app->img.endian);
 	y = 0;
 	while (y < app->map.height)
 	{
@@ -57,6 +59,5 @@ void	draw_map(t_app *app)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(app->mlx, app->win, app->img.img, 0, 0);
 }
-
-//	mlx_clear_window(app->mlx, app->win); clear_window_data

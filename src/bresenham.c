@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:41:29 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/03 21:06:44 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/06 17:49:08 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 static void	put_pixel(t_app *app, int x, int y, int color)
 {
-	mlx_pixel_put(app->mlx, app->win, x, y, color);
+	char	*dst;
+
+	if (x < 0 || y < 0 || x >= 800 || y >= 600)
+		return ;
+	dst = app->img.addr + (y * app->img.line_len + x * (app->img.bpp / 8));
+	*(unsigned int *)dst = color;
 }
 
 static int	ft_abs(int n)
