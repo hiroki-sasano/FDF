@@ -6,7 +6,7 @@
 /*   By: hisasano <hisasano@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:31:28 by hisasano          #+#    #+#             */
-/*   Updated: 2025/09/06 17:54:05 by hisasano         ###   ########.fr       */
+/*   Updated: 2025/09/07 16:18:05 by hisasano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,5 @@ void	draw_map(t_app *app)
 	}
 	mlx_put_image_to_window(app->mlx, app->win, app->img.img, 0, 0);
 }
+
+// mlx_get_data_addr(img.img, &img.bpp, &img.line_len, &img.endian);
